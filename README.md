@@ -9,12 +9,9 @@
 - **Draggable & Resizable** – Uses `react-rnd` to allow free movement and resizing of the widget.  
 - **Task Management** – Create, edit, delete, and reorder tasks effortlessly.  
 - **Auto-Save Progress** – Your tasks persist across sessions, so nothing gets lost.  
-- **Theme Switching** – Choose between Light, Dark, and Ocean themes in the settings menu.  
+- **Theme Switching** – Choose between Light, Dark, Coffee, Matcha and Ocean themes in the settings menu.  
 - **Task Prioritization** – Highlight important tasks for better organization.  
 - **Completion Effects** – Enjoy a confetti celebration when all tasks are completed!  
-- **Smooth Animations** – Powered by `framer-motion` for seamless interactions.  
-- **Quick Controls** – Right-click to quickly clear completed tasks or delete all.  
-
 ---
 
 ## 🚀 Tech Stack  
