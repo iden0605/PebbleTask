@@ -463,7 +463,7 @@ const TaskManager = () => {
             </div>
           )}
         </div>
-        <h1>Pebble task</h1>
+        <h1>Pebble Task</h1>
         <button
           onClick={toggleExpand}
           className="expand-collapse-btn"
