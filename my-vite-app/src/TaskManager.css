@@ -89,6 +89,28 @@ button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out, opacity 0.2s;
 }
+
+.edit-task-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.edit-button:hover {
+  opacity: 1;
+}
+
 .task-item.dragging {
   opacity: 0.5;
   transform: scale(1.05);
@@ -177,6 +199,21 @@ button:hover {
 /* transition for smooth color change */
 .task-item {
   transition: background-color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.task-item input[type="text"] {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.task-item button {
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-left: 4px;
 }
 
 /* progress bar */
@@ -1087,4 +1124,3 @@ body, .taskManager, .task-item, .settings-dropdown {
   background-color: #ccc;
   cursor: not-allowed;
 }
-

@@ -6,6 +6,8 @@ import './TaskManager.css';
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [taskInput, setTaskInput] = useState('');
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [editingTaskText, setEditingTaskText] = useState('');
   const [allCompleted, setAllCompleted] = useState(false);
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [size, setSize] = useState({ width: 300, height: 'auto' });
@@ -142,13 +144,36 @@ const TaskManager = () => {
     };
   }, []);
 
+  // handle editing a task
+  const handleEditTask = (task) => {
+    setEditingTaskId(task.id);
+    setEditingTaskText(task.text);
+  };
+
+  // handle saving an edited task
+  const handleSaveTask = (taskId) => {
+    const updatedTasks = tasks.map(task =>
+      task.id === taskId ? { ...task, text: editingTaskText } : task
+    );
+    setTasks(updatedTasks);
+    saveTasksToLocalStorage(updatedTasks);
+    setEditingTaskId(null);
+    setEditingTaskText('');
+  };
+
+  // handle canceling editing
+  const handleCancelEdit = () => {
+    setEditingTaskId(null);
+    setEditingTaskText('');
+  };
+
   // add new task
   const addTask = () => {
     if (taskInput.trim()) {
       const newTask = { id: Date.now(), text: taskInput, completed: false };
       const updatedTasks = [...tasks, newTask];
       setTasks(updatedTasks);
-      saveTasksToLocalStorage(updatedTasks); 
+      saveTasksToLocalStorage(updatedTasks);
       setTaskInput('');
     }
   };
@@ -500,8 +525,28 @@ const TaskManager = () => {
                     checked={task.completed}
                     onChange={() => toggleTaskCompletion(task.id)}
                   />
-                  <span>{task.text}</span>
-                  <button className="x-button" onClick={() => removeTask(task.id)}>X</button>
+                  {editingTaskId === task.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editingTaskText}
+                        onChange={(e) => setEditingTaskText(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            handleSaveTask(task.id);
+                          }
+                        }}
+                      />
+                      <button onClick={() => handleSaveTask(task.id)}>Save</button>
+                      <button onClick={handleCancelEdit}>Cancel</button>
+                    </>
+                  ) : (
+                    <>
+                      <span>{task.text}</span>
+                      <button onClick={() => handleEditTask(task)}>Edit</button>
+                      <button className="x-button" onClick={() => removeTask(task.id)}>X</button>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
