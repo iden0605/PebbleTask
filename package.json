@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "canvas-confetti": "^1.9.3",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1"
+  }
+}
